@@ -1,0 +1,34 @@
+﻿@inject BasketService BasketService
+
+@* UI Section *@
+<div class="card w-50">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Shoe @shoe.ShoeId: @shoe.Name</h5>
+        <p class="card-text">@shoe.Description</p>
+        <blockquote class="card-text"><strong>£@shoe.Price</strong></blockquote>
+
+        @if(DisplayBuyButton)
+        {
+            <button class="btn btn-primary" type="button"
+                @onclick="()=> Buy(shoe.ShoeId)">Add To Basket</button>
+        }
+    </div>
+</div>
+<h3>ShoeView</h3>
+
+@* Code Section *@
+@code 
+{
+    [Parameter]
+    public Shoe shoe { get; set; } = new Shoe();
+
+    [Parameter]
+    public bool DisplayBuyButton { get; set; } = true;
+
+    private void Buy(int ShoeId)
+    {
+        BasketService.AddToBasket(ShoeId);
+    }
+}

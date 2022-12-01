@@ -5,7 +5,7 @@ namespace BlazorShoes.Models
     public class Customer
     {
         [Key]
-        public int Id { get; set; }
+        public int CustomerId { get; set; }
 
         [Required, StringLength(20)]
         public string Name { get; set; } = String.Empty;
@@ -20,7 +20,7 @@ namespace BlazorShoes.Models
         public string PhoneNumber { get; set; } = String.Empty;
 
         // Navigation Properties
-        public CustomerAddress Address { get; set; }
-        public CustomerPayment Payment { get; set; }
+        public Address Address { get; set; }
+        public Payment Payment { get; set; }
     }
 }

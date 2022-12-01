@@ -1,0 +1,14 @@
+﻿@* UI Section *@
+<h3>ShoeList</h3>
+
+@foreach (Shoe item in Shoes)
+{
+    <ShoeView shoe="item"></ShoeView>
+}
+
+@* Code Section *@
+@code 
+{
+    [EditorRequired, Parameter]
+    public List<Shoe> Shoes { get; set; } = ShoeService.Shoes.ToList();
+}

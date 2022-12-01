@@ -5,7 +5,7 @@ namespace BlazorShoes.Models
     public class Shoe
     {
         [Key]
-        public int Id { get; set; }
+        public int ShoeId { get; set; }
 
         [Required, StringLength(100)]
         public string Name { get; set; } = String.Empty;

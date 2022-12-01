@@ -2,10 +2,10 @@
 
 namespace BlazorShoes.Models
 {
-    public class CustomerPayment
+    public class Payment
     {
         [Key]
-        public int Id { get; set; }
+        public int PaymentId { get; set; }
 
         [Required, MaxLength(16)]
         public long CardNumber { get; set; }

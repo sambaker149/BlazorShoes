@@ -2,10 +2,10 @@
 
 namespace BlazorShoes.Models
 {
-    public class CustomerAddress
+    public class Address
     {
         [Key]
-        public int Id { get; set; }
+        public int AddressId { get; set; }
 
         [Required]
         public int HouseNumber { get; set; }
