@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-BlazorShoes-DFA46D8E-D152-4C83-B97A-113C625E3E8D</UserSecretsId>
+    <UserSecretsId>aspnet-BlazorShoes1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

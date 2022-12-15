@@ -1,9 +1,5 @@
 ﻿@page "/Addresses/Create"
-@model BlazorShoes.Pages.Addresses.CreateModel
 
-@{
-    ViewData["Title"] = "Create";
-}
 
 <h1>Create</h1>
 
@@ -49,6 +45,8 @@
     <a asp-page="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@code
+{
+    public Address Address { get; set; } = new Address();
 }
+
