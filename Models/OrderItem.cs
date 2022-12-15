@@ -5,9 +5,10 @@ namespace BlazorShoes.Models
     public class OrderItem
     {
         [Key]
+        public int Id { get; set; }
+
         public virtual int ShoeId { get; set; }
 
-        [Key]
         public virtual int OrderId { get; set; }
 
         [Required, Range(15.00,100)]
@@ -18,6 +19,7 @@ namespace BlazorShoes.Models
 
         // Navigation Properties
         public virtual Shoe Shoe { get; set; }
+
         public virtual Order Order { get; set; }
     }
 }

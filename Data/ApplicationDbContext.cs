@@ -13,9 +13,9 @@ namespace BlazorShoes.Data
 
         public DbSet<Address> Addresses { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) 
-        { 
-            modelBuilder.Entity<OrderItem>().HasKey(nameof(OrderItem.OrderId), nameof(OrderItem.ShoeId)); 
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        //{ 
+        //    modelBuilder.Entity<OrderItem>().HasKey(nameof(OrderItem.OrderId), nameof(OrderItem.ShoeId)); 
+        //}
     }
 }
