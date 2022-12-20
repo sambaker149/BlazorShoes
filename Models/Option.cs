@@ -5,7 +5,9 @@ namespace BlazorShoes.Models
     public class Option
     {
         [Key]
-        public virtual ICollection<Shoe> Shoes { get; set; }
+        public int Id { get; set; }
+
+        public int ShoeId { get; set; }
 
         [Required, StringLength(20)]
         public string Type { get; set; } = String.Empty;
@@ -23,5 +25,8 @@ namespace BlazorShoes.Models
         public string Colour { get; set; } = String.Empty;
 
         public int Gender { get; set; }
+
+        // Navigation Properties
+        public virtual Shoe? Shoe { get; set; } = null;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace BlazorShoes.Models
+
 {
     public class Address
     {

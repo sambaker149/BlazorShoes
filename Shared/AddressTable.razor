@@ -1,0 +1,75 @@
+﻿@*@inject AddressService addressService*@
+@inject AddressesController controller;
+@using BlazorShoes.Controllers;
+@using BlazorShoes.Data;
+
+<h3>All Customer Addresses</h3>
+<p>
+    <a class="btn btn-primary" href="Addresses/Create">Add New Address</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                HouseNumber
+            </th>
+            <th>
+                HouseName
+            </th>
+            <th>
+                RoadName
+            </th>
+            <th>
+                PostTown
+            </th>
+            <th>
+                Postcode
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    @foreach (var item in Addresses) 
+    {
+        <tr>
+            <td>
+                @item.HouseNumber
+            </td>
+            <td>
+                @item.HouseName
+            </td>
+            <td>
+                @item.RoadName
+            </td>
+            <td>
+                @item.PostTown
+            </td>
+            <td>
+                @item.Postcode
+            </td>
+            <td>
+                <a href="/Addresses/Edit/@item.AddressId">Edit</a> |
+                <a href="/Addresses/Details/@item.AddressId">Details</a> |
+                <a href="/Addresses/Delete/@item.AddressId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@code
+{
+    public List<Address> Addresses { get; set; }
+
+    //private AddressesController controller;
+
+    protected override void OnInitialized()
+    {
+        Addresses = controller.GetAddresses();
+        //Addresses = addressService.GetAddresses();
+    }
+
+}

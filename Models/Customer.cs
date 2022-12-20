@@ -20,7 +20,7 @@ namespace BlazorShoes.Models
         public string PhoneNumber { get; set; } = String.Empty;
 
         // Navigation Properties
-        public Address Address { get; set; }
-        public Payment Payment { get; set; }
+        public Address? Address { get; set; } = null;
+        public Payment? Payment { get; set; } = null;
     }
 }

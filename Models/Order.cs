@@ -17,6 +17,6 @@ namespace BlazorShoes.Models
         public string OrderStatus { get; set; } = String.Empty;
 
         // Navigation Properties
-        public virtual ICollection<Customer> CustomerDetails { get; set; }
+        //public virtual ICollection<Customer> CustomerDetails { get; set; }
     }
 }

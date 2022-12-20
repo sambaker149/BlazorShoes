@@ -25,7 +25,7 @@ namespace BlazorShoes.Services
         {
             foreach(OrderItem item in SelectedItems)
             {
-                if(item.Shoe.ShoeId == ShoeId)
+                if( item.Shoe.ShoeId == ShoeId)
                 {
                     item.Quantity++;
                     return true;

@@ -1,11 +1,9 @@
 using BlazorShoes.Areas.Identity;
+using BlazorShoes.Controllers;
 using BlazorShoes.Data;
 using BlazorShoes.Services;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,8 +23,13 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddScoped<BasketService>();
+builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<AddressesController>();
 
-var app = builder.Build();
+// Added
+//builder.Services.AddDbContextFactory<ApplicationDbContext>();
+
+var app = builder.Build(); 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
