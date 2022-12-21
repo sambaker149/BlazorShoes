@@ -1,33 +1,20 @@
-﻿@*@inject AddressService addressService*@
+﻿@page "/Addresses/Index"
+@inject AddressService addressService
 @inject AddressesController controller;
-@using BlazorShoes.Controllers;
-@using BlazorShoes.Data;
 
-<h3>All Customer Addresses</h3>
+<h3>Customer Addresses</h3>
 <p>
     <a class="btn btn-primary" href="Addresses/Create">Add New Address</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                HouseNumber
-            </th>
-            <th>
-                HouseName
-            </th>
-            <th>
-                RoadName
-            </th>
-            <th>
-                PostTown
-            </th>
-            <th>
-                Postcode
-            </th>
-            <th>
-                Actions
-            </th>
+            <th>House No</th>
+            <th>House Name</th>
+            <th>Road Name</th>
+            <th>Town</th>
+            <th>Postcode</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -51,9 +38,9 @@
                 @item.Postcode
             </td>
             <td>
-                <a href="/Addresses/Edit/@item.AddressId">Edit</a> |
-                <a href="/Addresses/Details/@item.AddressId">Details</a> |
-                <a href="/Addresses/Delete/@item.AddressId">Delete</a>
+                <a class="btn btn-success" href="/Addresses/Edit/@item.AddressId">Edit</a> 
+                <a class="btn btn-info" href="/Addresses/Details/@item.AddressId">View</a> 
+                <a class="btn btn-danger" href="/Addresses/Delete/@item.AddressId">Delete</a>
             </td>
         </tr>
     }

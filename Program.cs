@@ -22,6 +22,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+
+// Add Services and API Controllers
+
 builder.Services.AddScoped<BasketService>();
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<AddressesController>();

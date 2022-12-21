@@ -1,8 +1,5 @@
 ﻿using BlazorShoes.Data;
 using BlazorShoes.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
 
 namespace BlazorShoes.Services
 {
