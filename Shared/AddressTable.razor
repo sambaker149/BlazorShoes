@@ -22,21 +22,11 @@
     @foreach (var item in Addresses) 
     {
         <tr>
-            <td>
-                @item.HouseNumber
-            </td>
-            <td>
-                @item.HouseName
-            </td>
-            <td>
-                @item.RoadName
-            </td>
-            <td>
-                @item.PostTown
-            </td>
-            <td>
-                @item.Postcode
-            </td>
+            <td>@item.HouseNumber</td>
+            <td>@item.HouseName</td>
+            <td>@item.RoadName</td>
+            <td>@item.PostTown</td>
+            <td>@item.Postcode</td>
             <td>
                 <a class="btn btn-success" href="/Addresses/Edit/@item.AddressId">Edit</a> 
                 <a class="btn btn-info" href="/Addresses/Details/@item.AddressId">View</a> 
