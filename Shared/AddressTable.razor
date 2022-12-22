@@ -1,14 +1,62 @@
 ﻿@page "/Addresses/Index"
+@using System.ComponentModel.DataAnnotations;
 @inject AddressService addressService
 @inject AddressesController controller;
 
-<h3>Customer Addresses</h3>
-<p>
+<h1 class="text-center text-info mb-5">Manage Customer Addresses</h1>
+@*<p>
     <a class="btn btn-primary" href="Addresses/Create">Add New Address</a>
-</p>
-<table class="table">
+</p>*@
+
+@*<input type="button" @onclick="AddAddress" class="btn form-control">Add Address</input>*@
+
+<EditForm Model="@address" OnValidSubmit="@AddAddress">
+
+    <h2 class="mb-3">Add New Addresses</h2>
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <button type="submit" class="btn btn-success">Add New Address</button>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>House No</th>
+                <th>House Name</th>
+                <th>Road Name</th>
+                <th>Town</th>
+                <th>Postcode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <InputNumber @bind-Value="address.HouseNumber" class="form-control" />
+                </td>
+                <td>
+                    <InputText @bind-Value="address.HouseName" class="form-control" />
+                </td>
+                <td>
+                    <InputText @bind-Value="address.RoadName" class="form-control" />
+                </td>
+                <td>
+                    <InputText @bind-Value="address.PostTown" class="form-control" />
+                </td>
+                <td>
+                    <InputText @bind-Value="address.Postcode" class="form-control" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</EditForm>
+
+<h2 class="mt-5">Current Address List</h2>
+
+<table class="table table-bordered">
     <thead>
-        <tr>
+        <tr class="bg-info">
             <th>House No</th>
             <th>House Name</th>
             <th>Road Name</th>
@@ -18,35 +66,61 @@
         </tr>
     </thead>
     <tbody>
-        
-    @foreach (var item in Addresses) 
-    {
-        <tr>
-            <td>@item.HouseNumber</td>
-            <td>@item.HouseName</td>
-            <td>@item.RoadName</td>
-            <td>@item.PostTown</td>
-            <td>@item.Postcode</td>
-            <td>
-                <a class="btn btn-success" href="/Addresses/Edit/@item.AddressId">Edit</a> 
-                <a class="btn btn-info" href="/Addresses/Details/@item.AddressId">View</a> 
-                <a class="btn btn-danger" href="/Addresses/Delete/@item.AddressId">Delete</a>
-            </td>
-        </tr>
-    }
+
+        @foreach (var item in Addresses)
+        {
+            <tr>
+                <td>@item.HouseNumber</td>
+                <td>@item.HouseName</td>
+                <td>@item.RoadName</td>
+                <td>@item.PostTown</td>
+                <td>@item.Postcode</td>
+                <td>
+                    <a class="btn btn-success" href="/Addresses/Edit/@item.AddressId">Edit</a>
+@*                    <a class="btn btn-info" href="/Addresses/Details/@item.AddressId">View</a>
+*@                    <input type="button" class="btn btn-danger" 
+                        @onclick="(() => DeleteAddress(item.AddressId))" 
+                        value="Delete"/>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
 
 @code
 {
     public List<Address> Addresses { get; set; }
 
+    private Address address { get; set; } = new();
+
     //private AddressesController controller;
 
     protected override void OnInitialized()
     {
-        Addresses = controller.GetAddresses();
-        //Addresses = addressService.GetAddresses();
+        GetAddresses();
     }
 
+    public void AddAddress()
+    {
+        addressService.CreateAddress(address);
+        GetAddresses();
+    }
+
+    public void DeleteAddress(int id)
+    {
+        addressService.RemoveAddress(id);
+        GetAddresses();
+    }
+
+    public void GetAddresses()
+    {
+//        Addresses = controller.GetAddresses();
+        Addresses = addressService.GetAddresses();
+    }
+
+    public void HandleValidSubmit()
+    {
+        var x = 0;
+    }
 }
