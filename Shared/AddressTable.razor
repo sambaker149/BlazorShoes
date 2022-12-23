@@ -54,6 +54,11 @@
 
 <h2 class="mt-5">Current Address List</h2>
 
+@*
+    This table supports updating and deleting but the update
+    does not occur with client side data validation.
+*@
+
 <table class="table table-bordered">
     <thead>
         <tr class="bg-info">
@@ -66,7 +71,6 @@
         </tr>
     </thead>
     <tbody>
-
         @foreach (var item in Addresses)
         {
             <tr>
