@@ -1,6 +1,7 @@
 ﻿using BlazorShoes.Data;
 using BlazorShoes.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorShoes.Services
 {
@@ -11,6 +12,11 @@ namespace BlazorShoes.Services
         public AddressService(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        private bool AddressExists(int id)
+        {
+            return _context.Addresses.Any(e => e.AddressId == id);
         }
 
         public List<Address> GetAddresses()
@@ -40,5 +46,25 @@ namespace BlazorShoes.Services
             return true;
         }
 
+        public void UpdateAddress(Address address)
+        {
+            _context.Entry(address).State = EntityState.Modified;
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AddressExists(address.AddressId))
+                {
+                    // should not happen
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

@@ -70,17 +70,30 @@
         @foreach (var item in Addresses)
         {
             <tr>
-                <td>@item.HouseNumber</td>
-                <td>@item.HouseName</td>
-                <td>@item.RoadName</td>
-                <td>@item.PostTown</td>
-                <td>@item.Postcode</td>
                 <td>
-                    <a class="btn btn-success" href="/Addresses/Edit/@item.AddressId">Edit</a>
-@*                    <a class="btn btn-info" href="/Addresses/Details/@item.AddressId">View</a>
-*@                    <input type="button" class="btn btn-danger" 
-                        @onclick="(() => DeleteAddress(item.AddressId))" 
-                        value="Delete"/>
+                    <input @bind="item.HouseNumber" type="number" class="form-control" />
+                </td>
+                <td>
+                    <input @bind="item.HouseName" class="form-control" />
+                </td>
+                <td>
+                    <input @bind="item.RoadName" class="form-control" />
+                </td>
+                <td>
+                    <input @bind="item.PostTown" class="form-control" />
+                </td>
+                <td>
+                    <input @bind="item.Postcode" class="form-control" />
+                </td>
+                <td>
+                    @*<a class="btn btn-success" href="/Addresses/Edit/@item.AddressId">Edit</a>
+                    <a class="btn btn-info" href="/Addresses/Details/@item.AddressId">View</a>*@
+                    
+                    <input type="button" class="btn btn-success"
+                        @onclick="(() => UpdateAddress(item))" value="Update" />
+                    
+                    <input type="button" class="btn btn-danger"
+                        @onclick="(() => DeleteAddress(item.AddressId))" value="Delete"/>
                 </td>
             </tr>
         }
@@ -105,22 +118,25 @@
     {
         addressService.CreateAddress(address);
         GetAddresses();
+        this.StateHasChanged();
     }
 
     public void DeleteAddress(int id)
     {
         addressService.RemoveAddress(id);
         GetAddresses();
+        this.StateHasChanged();
     }
 
     public void GetAddresses()
     {
-//        Addresses = controller.GetAddresses();
+        //        Addresses = controller.GetAddresses();
         Addresses = addressService.GetAddresses();
     }
 
-    public void HandleValidSubmit()
+    public void UpdateAddress(Address newAddress)
     {
-        var x = 0;
+        addressService.UpdateAddress(newAddress);
+        GetAddresses();
     }
 }
