@@ -22,7 +22,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>House No</th>
+                <th style="width:100px;">House No</th>
                 <th>House Name</th>
                 <th>Road Name</th>
                 <th>Town</th>
@@ -31,7 +31,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>
+                <td style="width:100px;">
                     <InputNumber @bind-Value="address.HouseNumber" class="form-control" />
                 </td>
                 <td>
@@ -57,7 +57,7 @@
 <table class="table table-bordered">
     <thead>
         <tr class="bg-info">
-            <th>House No</th>
+            <th class="text-center" style="width:100px;">House No</th>
             <th>House Name</th>
             <th>Road Name</th>
             <th>Town</th>
@@ -70,7 +70,7 @@
         @foreach (var item in Addresses)
         {
             <tr>
-                <td>
+                <td class="text-center">
                     <input @bind="item.HouseNumber" type="number" class="form-control" />
                 </td>
                 <td>
@@ -85,10 +85,7 @@
                 <td>
                     <input @bind="item.Postcode" class="form-control" />
                 </td>
-                <td>
-                    @*<a class="btn btn-success" href="/Addresses/Edit/@item.AddressId">Edit</a>
-                    <a class="btn btn-info" href="/Addresses/Details/@item.AddressId">View</a>*@
-                    
+                <td style="width:200px;">
                     <input type="button" class="btn btn-success"
                         @onclick="(() => UpdateAddress(item))" value="Update" />
                     
