@@ -13,6 +13,8 @@ namespace BlazorShoes.Data
 
         public DbSet<Address> Addresses { get; set; }
 
+        public DbSet<BlazorShoes.Models.Shoe> Shoe { get; set; }
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder) 
         //{ 
         //    modelBuilder.Entity<OrderItem>().HasKey(nameof(OrderItem.OrderId), nameof(OrderItem.ShoeId)); 

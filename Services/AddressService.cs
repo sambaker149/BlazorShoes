@@ -19,6 +19,11 @@ namespace BlazorShoes.Services
             return _context.Addresses.Any(e => e.AddressId == id);
         }
 
+        public Address GetAddress(int id)
+        {
+            return _context.Addresses.Find(id);
+        }
+
         public List<Address> GetAddresses()
         {
             var addressList = _context.Addresses.ToList();

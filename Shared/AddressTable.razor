@@ -12,14 +12,12 @@
 
 <EditForm Model="@address" OnValidSubmit="@AddAddress">
 
-    <h2 class="mb-3">Add New Addresses</h2>
+    <h2 class="mb-3">New Address Form</h2>
 
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <button type="submit" class="btn btn-success">Add New Address</button>
-
-    <table class="table table-bordered">
+    <table class="table table-bordered table-primary">
         <thead>
             <tr>
                 <th style="width:100px;">House No</th>
@@ -49,7 +47,11 @@
             </tr>
         </tbody>
     </table>
-    
+
+    <button type="submit" class="btn btn-success">Add New Address</button>
+    <NavLink href="@($"addresses/create")" class="btn btn-primary">
+        Add Address Page
+    </NavLink>
 </EditForm>
 
 <h2 class="mt-5">Current Address List</h2>
@@ -89,9 +91,13 @@
                 <td>
                     <input @bind="item.Postcode" class="form-control" />
                 </td>
-                <td style="width:200px;">
+                <td style="width:230px;">
                     <input type="button" class="btn btn-success"
                         @onclick="(() => UpdateAddress(item))" value="Update" />
+                    
+                    <NavLink href="@($"addresses/edit/{item.AddressId}")" class="btn btn-primary">
+                        Edit
+                    </NavLink>
                     
                     <input type="button" class="btn btn-danger"
                         @onclick="(() => DeleteAddress(item.AddressId))" value="Delete"/>
@@ -104,7 +110,10 @@
 
 @code
 {
+    // For Service
     public List<Address> Addresses { get; set; }
+    // For API Controller
+    public IEnumerable<Address> AddressList { get; set; }
 
     private Address address { get; set; } = new();
 
@@ -133,6 +142,12 @@
     {
         //        Addresses = controller.GetAddresses();
         Addresses = addressService.GetAddresses();
+    }
+
+    public async Task GetAddressesAsync()
+    {
+        // This line will not compile
+        //AddressList = await controller.GetAddresses();
     }
 
     public void UpdateAddress(Address newAddress)
