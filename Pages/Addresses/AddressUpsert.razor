@@ -1,8 +1,10 @@
 ﻿@page "/addresses/create"
 @page "/addresses/edit/{id:int}"
+
 @inject AddressesController controller
 @inject AddressService addressService
 @inject NavigationManager navigationManager
+
 
 <div class="row mt-2 mb-5">
 
@@ -82,7 +84,9 @@
     private async Task UpsertAddress()
     {
         if(id == null)
+        {
             await controller.PostAddress(address);
+        }
         else
             await controller.PutAddress(id.Value, address);
 

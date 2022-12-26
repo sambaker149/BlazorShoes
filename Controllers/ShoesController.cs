@@ -23,7 +23,7 @@ namespace BlazorShoes.Controllers
 
         // GET: api/Shoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Shoe>>> GetShoe()
+        public async Task<ActionResult<IEnumerable<Shoe>>> GetShoes()
         {
             return await _context.Shoe.ToListAsync();
         }
