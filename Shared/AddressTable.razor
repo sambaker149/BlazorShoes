@@ -112,6 +112,7 @@
 {
     // For Service
     public List<Address> Addresses { get; set; }
+    
     // For API Controller
     public IEnumerable<Address> AddressList { get; set; }
 
@@ -119,9 +120,9 @@
 
     //private AddressesController controller;
 
-    protected override void OnInitialized()
+    protected async override void OnInitialized()
     {
-        GetAddresses();
+        await GetAddresses();
     }
 
     public void AddAddress()
@@ -138,21 +139,21 @@
         this.StateHasChanged();
     }
 
-    public void GetAddresses()
+    public async Task GetAddresses()
     {
-        //        Addresses = controller.GetAddresses();
+         //Addresses = await controller.GetAddresses();
         Addresses = addressService.GetAddresses();
     }
 
     public async Task GetAddressesAsync()
     {
         // This line will not compile
-        //AddressList = await controller.GetAddresses();
+        AddressList = await controller.GetAddresses();
     }
 
     public void UpdateAddress(Address newAddress)
     {
         addressService.UpdateAddress(newAddress);
-        GetAddresses();
+         GetAddresses();
     }
 }

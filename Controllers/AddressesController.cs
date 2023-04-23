@@ -17,8 +17,15 @@ namespace BlazorShoes.Controllers
         }
 
         // GET: api/Addresses
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Address>>> GetAddresses()
+        //{
+        //    return await _context.Addresses.ToListAsync();
+        //}
+
+        // GET: api/Addresses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Address>>> GetAddresses()
+        public async Task<List<Address>> GetAddresses()
         {
             return await _context.Addresses.ToListAsync();
         }
